@@ -4,6 +4,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net46;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' == 'Unix'">netcoreapp2.0</TargetFrameworks>
     <OutputType>Library</OutputType>
 
     <AssemblyName>FSharp.Core.UnitTests</AssemblyName>
@@ -12,9 +13,10 @@
     <PreRelease>true</PreRelease>
 
     <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
-    <UnitTestType>xunit</UnitTestType>
+    <UnitTestType>nunit</UnitTestType>
     <IsTestProject>true</IsTestProject>
     <IsPackable>true</IsPackable>
+    <License>MIT</License>
 
     <!-- must be false so FsCheck can be loaded -->
     <SignAssembly>false</SignAssembly>
@@ -93,7 +95,7 @@
   <ItemGroup Condition="'$(BUILD_IN_FSHARP_REPOSITORY)' != 'true'">
     <PackageReference Include="FSharp.Core" Version="4.6.0" />
     <PackageReference Include="FsCheck" Version="3.0.0-alpha4" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" PrivateAssets="All" />
+    <!-- <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" PrivateAssets="All" /> -->
   </ItemGroup>
 
   <ItemGroup Condition="'$(UnitTestType)' == 'xunit'">
@@ -102,8 +104,8 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(UnitTestType)' != 'xunit'">
-    <PackageReference Include="nunit" Version="3.11.0" PrivateAssets="All" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" PrivateAssets="All" />
+    <!-- <PackageReference Include="nunit" Version="3.11.0" PrivateAssets="All" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" PrivateAssets="All" /> -->
   </ItemGroup>
 
 </Project>
